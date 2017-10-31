@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class New_gridadapter extends BaseAdapter {
     Context context;
-    ArrayList<News_Data> data;
+    ArrayList<News_Data> data = new ArrayList<>();
 
     New_gridadapter(Context context, ArrayList<News_Data> data){
         this.context = context;
@@ -24,7 +24,7 @@ public class New_gridadapter extends BaseAdapter {
     }
     @Override
     public int getCount() {
-        return 0;
+        return data.size();
     }
 
     @Override
@@ -40,11 +40,11 @@ public class New_gridadapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.new_gridview,parent);
+            convertView = LayoutInflater.from(context).inflate(R.layout.new_gridview,null);
         }
         ImageView iv1 = (ImageView)convertView.findViewById(R.id.news_image);
         TextView tv1 = (TextView)convertView.findViewById(R.id.news_title);
-        iv1.setImageResource(Integer.parseInt(data.get(position).getNews_img()));
+        iv1.setImageResource(data.get(position).getNews_img());
         tv1.setText(data.get(position).getNews_title());
 
         return convertView;
